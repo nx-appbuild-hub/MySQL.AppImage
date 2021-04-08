@@ -1,0 +1,31 @@
+[Desktop Entry]
+Name=MySQL
+Version=1.0
+Type=Application
+Exec=AppRun
+StartupWMClass=mysql
+Actions=Client;Admin;Server;Debug;
+Icon=mysql
+Terminal=true
+
+[Desktop Action Client]
+Name=MySQL Client
+GenericName=MySQL Client
+Exec=AppRun --client
+Terminal=true
+
+[Desktop Action Admin]
+Name=MySQL Admin
+Exec=AppRun --admin
+Terminal=true
+
+[Desktop Action Server]
+Name=MySQL Server
+Exec=AppRun --server
+Terminal=true
+
+[Desktop Action Debug]
+Name=MySQL Safe mode
+Exec=AppRun --safe
+Terminal=true
+
