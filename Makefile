@@ -17,7 +17,7 @@ all: clean
 	mkdir --parents $(PWD)/build/Boilerplate.AppDir/template
 
 
-	apprepo --destination=$(PWD)/build appdir boilerplate mysql-server
+	apprepo --destination=$(PWD)/build appdir boilerplate mysql-server libselinux1
 
 	echo ''                                                                                                           >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo ''                                                                                                           >> $(PWD)/build/Boilerplate.AppDir/AppRun
