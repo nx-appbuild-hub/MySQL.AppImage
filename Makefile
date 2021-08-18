@@ -42,9 +42,9 @@ all: clean
 	echo 'case "$${1}" in'                                                                                            >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo "  '--server') exec \$${APPDIR}/bin/mysqld       --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo "  '--safe')   exec \$${APPDIR}/bin/mysqld_safe  --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
-	echo "  '--admin')  exec \$${APPDIR}/bin/mysqladmin   --defaults-file=$${HOME}/.mysql/my.cnf     \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
-	echo "  '--client') exec \$${APPDIR}/bin/mysql        --defaults-file=$${HOME}/.mysql/my.cnf     \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
-	echo '  *) $${APPDIR}/bin/mysqld                      --defaults-file=$${HOME}/.mysql/my.cnf      $${@}   ;;'     >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo "  '--admin')  exec \$${APPDIR}/bin/mysqladmin   --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo "  '--client') exec \$${APPDIR}/bin/mysql        --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo '  *) $${APPDIR}/bin/mysqld                      --defaults-file=\$${HOME}/.mysql/my.cnf    \$${@}   ;;'     >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo 'esac'                                                                                                       >> $(PWD)/build/Boilerplate.AppDir/AppRun
 
 
