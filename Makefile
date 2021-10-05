@@ -39,13 +39,17 @@ all: clean
 	echo 'find $${HOME}/.mysql-server -type d -empty -exec bash -c "$${INITSERVER}" {} \; > /dev/null'  	          >> $(PWD)/build/Boilerplate.AppDir/AppRun	
 	echo ''                                                                                                           >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo ''                                                                                                           >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo 'rm -f $${HOME}/.mysql-server/undo_* > /dev/null 2>&1'                                                       >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo ''                                                                                                           >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo ''                                                                                                           >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo ''                                                                                                           >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo 'case "$${1}" in'                                                                                            >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo "  '--server') exec \$${APPDIR}/bin/mysqld       --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo "  '--safe')   exec \$${APPDIR}/bin/mysqld_safe  --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo "  '--admin')  exec \$${APPDIR}/bin/mysqladmin   --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
 	echo "  '--client') exec \$${APPDIR}/bin/mysql        --defaults-file=\$${HOME}/.mysql/my.cnf    \$${*:2} ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
-	echo '  *) $${APPDIR}/bin/mysqld                      --defaults-file=\$${HOME}/.mysql/my.cnf    \$${@}   ;;'     >> $(PWD)/build/Boilerplate.AppDir/AppRun
-	echo 'esac'                                                                                                       >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo "  *) \$${APPDIR}/bin/mysqld                      --defaults-file=\$${HOME}/.mysql/my.cnf    \$${@}  ;;"     >> $(PWD)/build/Boilerplate.AppDir/AppRun
+	echo "esac"                                                                                                       >> $(PWD)/build/Boilerplate.AppDir/AppRun
 
 
 	cp --force $(PWD)/AppDir/my.cnf        $(PWD)/build/Boilerplate.AppDir/template
