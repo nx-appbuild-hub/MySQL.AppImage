@@ -1,0 +1,29 @@
+permissions: write-all
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Deps
+      run: |
+        sudo apt-get -y install libfuse2
+
+        curl -o apprepo https://github.com/area-of-dev/apprepo.AppImage/releases/download/latest/apprepo.AppImage
+        chmod +x apprepo
+
+    - name: Build
+      run: |
+        PATH=$PATH:$PWD make all
+
+    - name: Release
+      uses: djnicholson/release-action@v2.11
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        asset-name: ${{ github.event.repository.name }}
+        file: ${{ github.event.repository.name }}
